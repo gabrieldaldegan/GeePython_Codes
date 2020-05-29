@@ -1,0 +1,11 @@
+invoke
+boto3
+sphinx
+sphinx-intl
+sphinx-rtd-theme
+transifex-client>=0.13.6
+pylint
+pip>=10.0.0
+PyQt5
+numba==0.48.0
+pillow==7.1.2
