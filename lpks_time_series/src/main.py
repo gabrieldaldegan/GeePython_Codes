@@ -21,6 +21,17 @@ import ee
 from landdegradation.download import download
 from landdegradation.util import get_region
 
+# The service account email address authorized by your Google contact.
+# Set up a service account as described in the README.
+EE_ACCOUNT = 'gef-ldmp-server@gef-ld-toolbox.iam.gserviceaccount.com'
+
+# The private key associated with your service account in JSON format.
+EE_PRIVATE_KEY_FILE = 'D:/Gabriel/CI/TrendsEarth/Git/GeePython_Codes/te_key.json'
+
+EE_CREDENTIALS = ee.ServiceAccountCredentials(EE_ACCOUNT, EE_PRIVATE_KEY_FILE)
+#ee.Initialize(EE_CREDENTIALS)
+ee.Initialize()
+
 def plotting_time_series(dataset, aoi, year_start, year_end):
     # datasets
     lcov = ee.Image(lcover).select(ee.List.sequence(yr_start-1992,26,1))
@@ -52,5 +63,3 @@ def run(params, logger):
     logger.debug("Running main script.")
     out = plotting_time_series(dataset, aoi, year_start, year_end)
     return out.export(geojsons, 'LandPKS Time Series', dataset, logger)
-    
-    
